@@ -1,22 +1,31 @@
 import PropTypes from 'prop-types';
 import style from './Button.module.scss';
 
-const Button = ({ title, type }) => {
+const Button = ({ title, type, id, onDelete }) => {
+  const hendelClick = () => onDelete(id);
   return (
-    <button className={style.button} type={type}>
+    <button
+      className={type === 'button' ? style.buttonButton : style.button}
+      type={type}
+      onClick={hendelClick}
+    >
       {title}
     </button>
   );
 };
 
 Button.defaultProps = {
-  title: 'Button submit',
-  type: 'submit',
+  title: 'button',
+  type: 'button',
+  id: '',
+  onDelete: () => {},
 };
 
 Button.propTypes = {
   title: PropTypes.string,
   type: PropTypes.string,
+  id: PropTypes.string,
+  onDelete: PropTypes.func,
 };
 
 export default Button;

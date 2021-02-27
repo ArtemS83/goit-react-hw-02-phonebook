@@ -15,7 +15,10 @@ const ContactsInputForm = ({ contacts, onSubmitForm }) => {
 
   const handleAddContact = e => {
     e.preventDefault();
-    if (!number || !name) return;
+    if (!number || !name) {
+      alert(`Name or Number not entered `);
+      return;
+    }
 
     const normalizedName = name.toLowerCase().trim();
     const isExistingUser = contacts.find(contact =>
@@ -58,7 +61,7 @@ const ContactsInputForm = ({ contacts, onSubmitForm }) => {
           onChange={handleInputChange}
         />
       </label>
-      <Button title="Add contact" />
+      <Button title="Add contact" type="submit" />
     </form>
   );
 };
